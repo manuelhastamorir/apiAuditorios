@@ -13,18 +13,20 @@ public class Cliente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
-    private String name;
     private String email;
-    private Integer age;
     private String password;
+    private String name;
+    private Integer age;
+    
+    
+    @OneToMany (cascade = {CascadeType.PERSIST},mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    private List <Mensaje> messages;
+  
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Reserva> reservations;
-
-    @OneToMany (cascade = {CascadeType.PERSIST},mappedBy = "client")
-    @JsonIgnoreProperties("client")
-    private List <Mensaje> messages;
   
     public Integer getIdClient() {
         return idClient;

@@ -24,8 +24,7 @@ public class Reserva
     private Date startDate;
     private Date devolutionDate;
     private String status;
-    private Integer score;
-
+    
     @ManyToOne
     @JoinColumn(name="id")
     @JsonIgnoreProperties("reservations")
@@ -36,7 +35,8 @@ public class Reserva
     @JsonIgnoreProperties({"reservations","messages"})
     private Cliente client;
  
-   
+    private Integer score;
+
     public Integer getIdReservation() {
         return idReservation;
     }

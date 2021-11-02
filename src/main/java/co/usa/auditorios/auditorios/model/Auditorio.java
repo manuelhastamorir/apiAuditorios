@@ -14,10 +14,15 @@ public class Auditorio implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String owner;
     private String name;
+    private String owner;
     private Integer capacity;
     private String  description;
+
+    @ManyToOne
+    @JoinColumn(name="categoryId")
+    @JsonIgnoreProperties("audiences")
+    private Categoria category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "audience")
     @JsonIgnoreProperties({ "audience", "client" })
@@ -26,11 +31,6 @@ public class Auditorio implements Serializable
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "audience")
     @JsonIgnoreProperties({ "audience", "client" })
     private List<Reserva> reservations; 
-
-    @ManyToOne
-    @JoinColumn(name="categoryId")
-    @JsonIgnoreProperties("audiences")
-    private Categoria category;
     
     public Integer getId() {
         return id;
