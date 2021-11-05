@@ -30,4 +30,8 @@ public class MensajeRepositorio
         return mensajeCrudRepositorio.save(msj);
     }
 
+    public void delete (Mensaje msj)
+    {
+        mensajeCrudRepositorio.delete(msj);
+    }
 }

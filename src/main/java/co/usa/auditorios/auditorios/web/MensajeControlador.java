@@ -37,4 +37,18 @@ public class MensajeControlador
     {
         return mensajeServicio.save(msj);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mensaje update (@RequestBody Mensaje msj)
+    {
+        return mensajeServicio.update(msj);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteMensaje (@PathVariable("id") int id)
+    {
+        return mensajeServicio.deleteMensaje(id);
+    }
 }

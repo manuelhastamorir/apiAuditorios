@@ -30,4 +30,9 @@ public class AuditorioRepositorio
         return auditorioCrudRepositorio.save(audi);
     }
 
+    public void delete (Auditorio audi)
+    {
+        auditorioCrudRepositorio.delete(audi);
+    }
+
 }

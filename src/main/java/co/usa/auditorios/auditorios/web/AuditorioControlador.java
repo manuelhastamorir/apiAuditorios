@@ -37,4 +37,20 @@ public class AuditorioControlador
         return auditorioServicio.save(audi);
     }
 
+    @PutMapping ("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Auditorio update (@RequestBody Auditorio audi)
+    {
+        return auditorioServicio.update(audi);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteAuditorio(@PathVariable ("id") int id)
+    {
+        return auditorioServicio.deleteAuditorio(id);
+    }
+
+
+
 }

@@ -37,5 +37,18 @@ public class CategoriaControlador
         return categoriaServicio.save(catego);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Categoria update (@RequestBody Categoria catego)
+    {
+        return categoriaServicio.update(catego);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteCategoria (@PathVariable("id") int id)
+    {
+        return categoriaServicio.deleteCategoria(id);
+    }
         
 }

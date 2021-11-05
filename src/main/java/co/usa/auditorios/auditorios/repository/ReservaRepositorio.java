@@ -30,4 +30,9 @@ public class ReservaRepositorio
         return reservaCrudRepositorio.save(res);
     }
 
+    public void delete (Reserva res)
+    {
+        reservaCrudRepositorio.delete(res);
+    }
+
 }

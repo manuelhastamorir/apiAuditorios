@@ -30,5 +30,9 @@ public class CategoriaRepositorio
         return categoriaCrudRepositorio.save(catego);
     }
 
+    public void delete(Categoria catego)
+    {
+        categoriaCrudRepositorio.delete(catego);
+    }
 
 }

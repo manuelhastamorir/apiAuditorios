@@ -45,4 +45,32 @@ public class MensajeServicio
             }
         }
     }
+
+    public Mensaje update (Mensaje msj)
+    {
+        if(msj.getIdMessage()!=null)
+        {
+            Optional<Mensaje> consulta = mensajeRepositorio.getMensaje(msj.getIdMessage());
+            if (!consulta.isEmpty()) 
+            {
+                if (msj.getMessageText()!=null) 
+                {
+                    consulta.get().setMessageText(msj.getMessageText());    
+                }
+                return mensajeRepositorio.save(consulta.get());   
+            }
+        }
+        return msj;
+    }
+
+    public boolean deleteMensaje (int id)
+    {
+        Optional<Mensaje> consulta = mensajeRepositorio.getMensaje(id);
+        if (!consulta.isEmpty()) 
+        {
+            mensajeRepositorio.delete(consulta.get());   
+            return true; 
+        }        
+        return false;
+    }
 }

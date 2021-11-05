@@ -30,4 +30,8 @@ public class ClienteRepositorio
         return clienteCrudRepositorio.save(cli);
     }
     
+    public void delete (Cliente cli)
+    {
+        clienteCrudRepositorio.delete(cli);
+    }
 }

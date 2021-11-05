@@ -35,4 +35,19 @@ public class ReservaControlador
         res.setStatus("created");
         return reservaServicio.save(res);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reserva update (@RequestBody Reserva res)
+    {
+        res.setStatus("modificado");
+        return reservaServicio.update(res);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteReserva (@PathVariable("id") int id)
+    {
+        return reservaServicio.deleteReserva(id);
+    }
 }

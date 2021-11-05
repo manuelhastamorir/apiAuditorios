@@ -43,5 +43,43 @@ public class AuditorioServicio
             }
         }
     }
+    public Auditorio update (Auditorio audi)
+    {
+        if(audi.getId()!=null)
+        {
+            Optional<Auditorio> consulta = auditorioRepositorio.getAuditorio(audi.getId());
+            if (!consulta.isEmpty()) 
+            {
+                if (audi.getName()!=null) 
+                {
+                    consulta.get().setName(audi.getName());    
+                }
+                if (audi.getOwner()!=null)
+                {
+                    consulta.get().setOwner(audi.getOwner());   
+                }
+                if (audi.getCapacity()!=null) 
+                {
+                    consulta.get().setCapacity(audi.getCapacity());
+                }
+                if (audi.getDescription()!=null)
+                {
+                    consulta.get().setDescription(audi.getDescription());    
+                }   
+                return auditorioRepositorio.save(consulta.get());
+            }
+        }
+        return audi;
+    }
 
+    public boolean deleteAuditorio(int id)
+    {
+        Optional<Auditorio> consulta = auditorioRepositorio.getAuditorio(id);
+        if (!consulta.isEmpty()) 
+        {
+            auditorioRepositorio.delete(consulta.get());
+            return true;    
+        }
+        return false;
+    }
 }
